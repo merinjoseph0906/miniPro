@@ -1,0 +1,50 @@
+{% extends 'userbase.html'%}
+{% load static %}
+{% block content %}
+
+{% comment %} <table>
+<div class="content">
+    <tr><th>vaccinename</th><th>Date</th></tr>
+   <tr><td> {{i.vaccinename}}</td><td>{{i.vaccinedate}}</td></tr>
+    
+        {% endfor %}
+    </div>
+</table> {% endcomment %}
+
+
+<table>
+  <tr>
+    <th>VACCINE NAME</th>
+    <th>DATE OF VACCINATION</th> 
+    <th>VACCINE TIME</th>
+
+    
+  </tr>
+  {% for i in vaccination%}
+  <tr>
+    <td>{{i.vaccinename}}</td>
+    <td>{{i.vaccinedate}}</td>
+    <td>{{i.vaccinetime}}</td>
+    
+  </tr>
+  
+  {% endfor %}
+</table>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+{% endblock content %}

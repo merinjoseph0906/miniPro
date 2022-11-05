@@ -1,0 +1,443 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Auditions Registration Form Widget Flat Responsive Widget Template :: w3layouts</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Auditions Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- //for-mobile-apps -->
+<!-- //custom-theme -->
+<link href="{% static 'css/style5.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- font-awesome-icons -->
+<!-- //font-awesome-icons -->
+<link href="//fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+</head>
+<body>
+<!-- banner -->
+	<div class="center-container">
+	<div class="banner-dott">
+		<div class="main">
+			<h1 class="w3layouts_head">Registration form</h1>
+				<div class="w3layouts_main_grid">
+					<form  action="{% url 'duplicate' %}" method="POST"  onsubmit="return validation()" id="registration">
+						{% csrf_token %}
+						{% include 'Message.html' %}
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Register as </label>
+								<select name="role" path="role" id="role" >
+									<option value=""  disabled>Select Category</option>
+									<option value="is_child">Child</option>
+									<option value="is_ashaworker">Asha worker</option>
+									<option value="is_hospital">Hospital</option>
+									<option value="is_PHC">PHC</option>
+
+								</select>
+							</span>
+						</div> 
+						{% comment %} <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Username</label>
+								<input type="text" name="username" placeholder="user Name" required="">
+							</span>
+						</div> {% endcomment %}
+						{% comment %} <div class="w3_agileits_main_grid w3l_main_grid">
+						  
+							{% comment %} <span id="pho" style="font-size:12px;margin-top:-5px;" class="text-danger font-weight-bold"></span> {% endcomment %}
+
+								
+
+								{% comment %} <span  id="pho"  class="agileits_grid">  
+						</div><label>Phone Number </label>
+						<input type="text" name="phonenumber" placeholder="Phonenumber" id="phonenumber" onkeyup='phoneValidation(this)' required />
+					</span> {% endcomment %} 
+					<div class="w3_agileits_main_grid w3l_main_grid">
+						
+							<label>Phone Number</label>
+							<input type="tel" name="phonenumber" id="phonenumber" placeholder="Your Phone Number" onkeyup='phoneValidation(this)'>
+							<span id="pho"></span>
+					</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="mail" class="agileits_grid">
+								<label>Your Email </label>
+								<input type="email" name="email" id="email" placeholder="Email" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span  id="address" sclass="agileits_grid">
+								<label>Address</label>
+								<input type="text" name="address" placeholder="address"  required=""> 
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>City </label>
+								<input type="text" name="city" placeholder="city" required pattern="[a-zA_Z\s]+"="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Pincode </label>
+								<input type="text" name="pincode" placeholder="pincode" equired pattern="[0-9]+">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>District</label>
+								<select name="district">
+									<option value="" selected="" disabled="">Select District</option>
+									<option value="Thiruvananthapuram">Thiruvananthapuram</option>
+									<option value="Kollam">Kollam</option>
+									<option value="Kottayam">Kottayam</option>
+									<option value="Kozhikode">Kozhikode</option>
+                                    <option value="alappuram">Malappuram</option>
+									<option value="Palakkad">Palakkad</option>
+									<option value="Pathanamthitta">Pathanamthitta</option>
+									<option value="Thrissur">Thrissur</option>
+									<option value="Idukki">Idukki</option>
+									<option value="Kannur">Kannur</option>
+                                    <option value="Ernakulam">Ernakulam</option>
+									<option value="Wayanad">Wayanad</option>
+									<option value="Kasargod">Kasargod</option>
+									<option value="Alappuzha">Alappuzha</option>
+									
+								</select>
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="pa1" class="agileits_grid">
+								<label>Password </label>
+								<input type="password" name="password"  id="password" placeholder="Your password" required="">
+							 <span id="pe"> </span> 
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="pa1" class="agileits_grid">
+								<label>Confirm </label>
+								<input type="password" name="cpassword" id="cpassword" placeholder="Your password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+							</span>
+						</div>
+						
+						{% comment %} <div class="agileits_w3layouts_main_grid w3ls_main_grid">
+							<span class="agileinfo_grid">
+								<label>Date / Time </label>
+								<div class="agileits_w3layouts_main_gridl">
+									<input class="date" id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+								</div>
+								<!--<div class="agileits_w3layouts_main_gridr">
+									<input type="time" name="Time" placeholder=" " required="">
+								</div>-->
+									<div class="clear"> </div>
+							</span>
+						</div> {% endcomment %}
+					
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+							<a href="{%  url 'userhome' %}"><input type="submit" value="Submit"></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		{% comment %} <!-- Calendar -->
+			<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
+				<script src="{% static 'js/jquery-ui.js' %}"></script>
+					<script>
+						$(function() {
+							$( "#datepicker" ).datepicker();
+						});
+					</script> {% endcomment %}
+		<!-- //Calendar -->
+			
+		</div>
+	</div>
+	</div>
+
+	<script type="text/javascript">
+	function inputValidation(inputTxt){
+    
+		var regx = /^[0-9a-zA-Z ]+$/;
+		var textField = document.getElementById("textField");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 5){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = 'Good input';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only numbers, letters And White space';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input is less than 5 chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function fnameValidation(inputTxt){
+		
+		var regx = /^[a-zA-Z]+$/;
+		var textField = document.getElementById("name");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 2){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only characters allowded';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input mut me more than two chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function lnameValidation(inputTxt){
+		
+		var regx = /^[a-zA-Z  ]+$/;
+		var textField = document.getElementById("names");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 1){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only characters allowded';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input mut me more than two chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function addressValidation(inputTxt){
+		
+		var regx = /^[a-zA-Z-()]+$/;
+		var textField = document.getElementById("addr");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 4){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only characters allowded';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input mut me more than two chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	
+	function emailValidation(inputTxt){
+		// ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$
+		var regx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+		var textField = document.getElementById("mail");
+			
+		if(inputTxt.value != '' ){
+			if(inputTxt.value.match(regx)){
+				textField.textContent = '';
+				textField.style.color = "green";
+			}else{
+				textField.textContent = 'email is not valid!!!';
+				textField.style.color = "red";
+			}  
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function phoneValidation(inputTxt){
+		
+		var regx = /^[6-9][0-9]{9}$/;
+		var textField = document.getElementById("pho");
+			
+		if(inputTxt.value != '' ){
+			if(inputTxt.value.match(regx)){
+				textField.textContent = '';
+				textField.style.color = "green";        
+				}else{
+					textField.textContent = '**not valid phone number';
+					textField.style.color = "red";
+				}  
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	
+	function cityValidation(inputTxt){
+		
+		var regx = /^[a-zA-Z]+$/;
+		var textField = document.getElementById("cit");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 1){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only characters allowded';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input mut me more than two chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function districtValidation(inputTxt){
+		
+		var regx = /^[a-zA-Z]+$/;
+		var textField = document.getElementById("states");
+			
+		if(inputTxt.value != '' ){
+		
+			if(inputTxt.value.length >= 1){
+			
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only characters allowded';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = 'your input mut me more than two chracters';
+				textField.style.color = "red";
+			}   
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	function pincodeValidation(inputTxt){
+		
+		var regx = /^[6][0-9]{5}$/;
+		var textField = document.getElementById("pin");
+			
+		if(inputTxt.value != '' ){
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'only valid pincode';
+					textField.style.color = "red";
+				}  
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	
+	function passwordValidation(inputTxt){
+		
+		var regx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}/;
+		var textField = document.getElementById("pass1");
+			
+		if(inputTxt.value != '' ){
+				if(inputTxt.value.match(regx)){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'Must contain at least one number and one uppercase and lowercase letter and aleast 5 characters';
+					textField.style.color = "red";
+				}    
+		}else{
+			textField.textContent = 'your input is empty';
+			textField.style.color = "red";
+		}
+	}
+	
+	
+	function cpasswordValidation(inputTxt){
+		
+		var regx =  document.getElementById("pwd").value;
+		var regy =  document.getElementById("cpwd").value;
+		var textField = document.getElementById("pass2");
+		var textField1 = document.getElementById("pass1");
+			
+		if(inputTxt.value != '' ){    
+				if(regx == regy){
+					textField.textContent = '';
+					textField.style.color = "green";
+						
+				}else{
+					textField.textContent = 'not match';
+					textField.style.color = "red";
+				}  
+			}else{
+				textField.textContent = '';
+				textField.style.color = "red";
+			}  
+	} 
+<!-- //footer -->
+</script>
+</body>
+</html>
+{% endblock %}

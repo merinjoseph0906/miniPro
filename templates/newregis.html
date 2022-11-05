@@ -1,0 +1,393 @@
+<!--author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>    
+<title>Library Membership Form A Flat Responsive Widget Template :: w3layouts</title>
+<!-- meta_tags-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Library Membership form A Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta_tag_Keywords-->
+<!--css_files-->
+	<link rel="stylesheet" href="{% static 'css/jquery-ui new.css' %}"/>
+	<link href="{% static 'css/style6.css' %} " rel="stylesheet" type="text/css" media="all"/><!--stylesheet-->
+	<link rel="stylesheet" href="{% static 'css/font-awesome.css' %} "><!--font_wesome_icons-->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet"><!--online_fonts-->
+	<link href="//fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"><!--online_fonts-->
+<!--//css_files-->
+</head>
+<body>
+<div class="w3l-head">
+<h1>Registration form</h1>
+</div>
+<div class="w3ls-form">
+	<script>document.getElementById("myForm").reset();</script>
+<form  onsubmit ="return  emailValidation() && addressValidation() && cityValidation() && districtValidation() && pincodeValidation() && passwordValidation() && cpasswordValidation()"action="{% url 'newregis' %}" method="POST" id="myForm">
+	{% csrf_token %}
+						{% include 'Message.html' %}
+	<div class="w3l-right-grid1">
+		<div class="w3l-grid1">
+			<label class="text">Register as </label>
+				<div class="w3l-div">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					<select class="form-contro3" name="role" path="role" id="role">
+						<option value="is_child">Child</option>
+						<option value="is_ashaworker">Asha worker</option>
+						<option value="is_hospital">Hospital</option>
+						<option value="is_PHC">PHC</option>
+						
+					</select>
+				</div>
+		</div>	
+		<div class="clear"></div>
+		{% comment %} <div class="w3l-last-grid1"> {% endcomment %}
+			{% comment %} <div class="w3l-grid1">
+				<label class="text">First name</label>
+				<div class="w3l-div">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input type="text" name="name" placeholder="first name" required=""/>
+				</div>
+			</div>  {% endcomment %}
+			{% comment %} <div class="w3l-grid2">
+			<label class="text">Last name</label>
+			<div class="w3l-div">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input type="text" name="name" placeholder="last name" required=""/>
+			</div>
+			</div>
+			<div class="clear"></div>
+		</div>	 {% endcomment %}
+		{% comment %} <div class="w3l-last-grid1">
+			<div class="w3l-grid1">
+				<label class="text">gender</label>
+				<div class="w3l-div">
+					<i class="fa fa-users" aria-hidden="true"></i>
+					<select class="form-control" required="">
+						<option>gender</option>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+			</div>	 {% endcomment %}
+			{% comment %} <div class="w3l-grid2">
+				<label class="text">date of birth</label>
+				<div class="w3l-div">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+					<input type="text" class="date" id="datepicker" name="date of birth" placeholder="dob" value="MM/DD/YYYY" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required=""/>
+				</div>	
+			</div>	
+			<div class="clear"></div>
+		</div> {% endcomment %}
+		
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">
+				<label class="text">Your Email</label>
+				<div class="w3l-div">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<input type="email" name="email" placeholder="e-mail" onkeyup='emailValidation(this)' required/>
+					<span class="error-msg" id="email"> </span><br>
+				</div>
+			</div>
+			<div class="w3l-grid2">
+				<label class="text">phone number</label>
+				<div class="w3l-div">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<input type="text" name="phonenumber" placeholder="phone number" onkeyup='phoneValidation(this)' required/>
+					<span class="error-msg" id="contact">
+					</span><br>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">	
+				<label class="text">address</label>
+				<div class="w3l-div">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i>
+					<input type="text" name="address" placeholder="current address" onkeyup='addressValidation(this)' required/>
+					<span class="error-msg" id="address"></span>
+				</div>
+			</div>
+			<div class="w3l-grid2">	
+				<label class="text">city</label>
+				<div class="w3l-div">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<input type="text" name="city" placeholder="city" onkeyup='cityValidation(this)' required/>
+					<span class="error-msg" id="city"></span>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="w3l-right-grid1">
+			<div class="w3l-grid1">
+				<label class="text">District <span>?</span></label>
+					<div class="w3l-div">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						<select class="form-contro3" name="district">
+							<option value="Thiruvananthapuram">Thiruvananthapuram</option>
+							<option value="Kollam">Kollam</option>
+							<option value="Kottayam">Kottayam</option>
+							<option value="Kozhikode">Kozhikode</option>
+							<option value="alappuram">Malappuram</option>
+							<option value="Palakkad">Palakkad</option>
+							<option value="Pathanamthitta">Pathanamthitta</option>
+							<option value="Thrissur">Thrissur</option>
+							<option value="Idukki">Idukki</option>
+							<option value="Kannur">Kannur</option>
+							<option value="Ernakulam">Ernakulam</option>
+							<option value="Wayanad">Wayanad</option>
+							<option value="Kasargod">Kasargod</option>
+							<option value="Alappuzha">Alappuzha</option>
+						</select>
+					</div>
+			</div>	
+		{% comment %} <div class="w3l-right-grid1">
+			<div class="w3l-grid1">
+				<label class="text">state</label>
+				<div class="w3l-div">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<input type="text" name="state" placeholder="state/province" required=""/>
+				</div>
+			</div> {% endcomment %}
+			
+			<div class="w3l-grid2">
+				<label class="text">pincode</label>
+				<div class="w3l-div">
+					<i class="fa fa-address-card-o" aria-hidden="true"></i>
+					<input type="text" name="pincode" placeholder="pincode" onkeyup='pincodeValidation(this)' required/>
+					<span class="error-msg" id="pincode"></span><br>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="w3l-grid2">
+			<label class="text">Password</label>
+			<div class="w3l-div">
+			   <i class="fa fa-eye" aria-hidden="true"></i>
+			   <input type="password" name="password" placeholder=" Password" id="pass1" onkeyup='passwordValidation(this)' required/>
+			   <span class="error-msg" id="password"></span><br>
+   
+			</div>
+		 </div>
+		 <div class="w3l-grid2">
+			<label class="text">Confirm Password</label>
+			<div class="w3l-div">
+			   <i class="fa fa-eye" aria-hidden="true"></i>
+			   <input type="password" name="cpassword" placeholder="Confirm Password"id="pass2" onkeyup='cpasswordValidation(this)' required/>
+			   <span class="error-msg" id="confirmpassword"> </span><br>
+			</div>
+		 </div>
+		
+		{% comment %} <div class="w3l-right-grid1">
+		<div class="w3l-grid1">
+			<label class="text">takes member ship <span>?</span></label>
+				<div class="w3l-div">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					<select class="form-contro3" required="">
+						<option>membership</option>
+						<option>yearly</option>
+						<option>quarterly</option>
+						<option>weakly</option>
+						<option>never</option>
+					</select>
+				</div>
+		</div>	 {% endcomment %}
+			{% comment %} <label class="text">which type of books</label>
+			<div class="w3l-grid2">
+				<div class="w3l-div">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					<select class="form-contro2" required="">
+						<option>select books</option>
+						<option>history</option>
+						<option>science</option>
+						<option>social</option>
+						<option>mathematics</option>
+					</select>
+				</div>
+			</div> {% endcomment %}
+		</div>
+		<div class="clear"></div>
+		<div class="w3ls-submit">
+			<a href="{%  url 'userhome' %}"><input type="submit" value="REGISTER">
+		</div>
+</form>
+</div>
+{% comment %} <footer>&copy; 2018 library membership Form. All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></footer> {% endcomment %}
+
+<!-- Default-JavaScript --> <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+
+<!-- Calendar -->
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+	<script>
+		$(function() {
+		$( "#datepicker,#datepicker1" ).datepicker();
+		});
+	</script>
+<!-- //Calendar -->
+<script type="text/javascript">
+function emailValidation(inputTxt){
+    // ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$
+    var regx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+    var textField = document.getElementById("email");
+
+    if(inputTxt.value != '' ){
+        if(inputTxt.value.match(regx)){
+            textField.textContent = '';
+            textField.style.color = "green";
+        }else{
+            textField.textContent = 'email is not valid!!!';
+            textField.style.color = "red";
+        }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+function phoneValidation(inputTxt){
+
+    var regx = /^[6-9][0-9]{9}$/;
+    var textField = document.getElementById("contact");
+
+    if(inputTxt.value != '' ){
+        if(inputTxt.value.match(regx)){
+            textField.textContent = '';
+            textField.style.color = "green";
+            }else{
+                textField.textContent = '**not valid phone number';
+                textField.style.color = "red";
+            }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+function addressValidation(inputTxt){
+
+    var regx = /^[a-zA-Z-()]+$/;
+    var textField = document.getElementById("address");
+
+    if(inputTxt.value != '' ){
+
+        if(inputTxt.value.length >= 4){
+
+            if(inputTxt.value.match(regx)){
+                textField.textContent = '';
+                textField.style.color = "green";
+
+            }else{
+                textField.textContent = 'only characters allowded';
+                textField.style.color = "red";
+            }
+        }else{
+            textField.textContent = 'your input mut me more than two chracters';
+            textField.style.color = "red";
+        }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+
+function cityValidation(inputTxt){
+
+    var regx = /^[a-zA-Z]+$/;
+    var textField = document.getElementById("city");
+
+    if(inputTxt.value != '' ){
+
+        if(inputTxt.value.length >= 1){
+
+            if(inputTxt.value.match(regx)){
+                textField.textContent = '';
+                textField.style.color = "green";
+
+            }else{
+                textField.textContent = 'only characters allowded';
+                textField.style.color = "red";
+            }
+        }else{
+            textField.textContent = 'your input mut me more than two chracters';
+            textField.style.color = "red";
+        }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+function pincodeValidation(inputTxt){
+
+    var regx = /^[6][0-9]{5}$/;
+    var textField = document.getElementById("pincode");
+
+    if(inputTxt.value != '' ){
+            if(inputTxt.value.match(regx)){
+                textField.textContent = '';
+                textField.style.color = "green";
+
+            }else{
+                textField.textContent = 'only valid pincode';
+                textField.style.color = "red";
+            }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+function passwordValidation(inputTxt){
+
+    var regx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}/;
+    var textField = document.getElementById("password");
+
+    if(inputTxt.value != '' ){
+            if(inputTxt.value.match(regx)){
+                textField.textContent = '';
+                textField.style.color = "green";
+
+            }else{
+                textField.textContent = 'Must contain at least one number and one uppercase and lowercase letter and aleast 5 characters';
+                textField.style.color = "red";
+            }
+    }else{
+        textField.textContent = 'your input is empty';
+        textField.style.color = "red";
+    }
+}
+
+
+function cpasswordValidation(inputTxt){
+
+    var regx =  document.getElementById("pass1").value;
+    var regy =  document.getElementById("pass2").value;
+    var textField = document.getElementById("confirmpassword");
+    var textField1 = document.getElementById("password");
+
+    if(inputTxt.value != '' ){
+            if(regx == regy){
+                textField.textContent = '';
+                textField.style.color = "green";
+
+            }else{
+                textField.textContent = 'not match';
+                textField.style.color = "red";
+            }
+        }else{
+            textField.textContent = '';
+            textField.style.color = "red";
+        }
+}
+
+</script>
+</body>
+</html>
+{% endblock %}

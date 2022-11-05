@@ -1,0 +1,273 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Auditions Registration Form Widget Flat Responsive Widget Template :: w3layouts</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Auditions Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- //for-mobile-apps -->
+<!-- //custom-theme -->
+<link href="{% static 'css/style5.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- font-awesome-icons -->
+<!-- //font-awesome-icons -->
+<link href="//fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+</head>
+<body>
+<!-- banner -->
+	<div class="center-container">
+	<div class="banner-dott">
+		<div class="main">
+			<h1 class="w3layouts_head">Registration form</h1>
+				<div class="w3layouts_main_grid">
+					<form  action="{% url 'registration' %}" method="POST"  onsubmit="return validation()" id="registration">
+						{% csrf_token %}
+						{% include 'Message.html' %}
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Register as </label>
+								<select name="role" path="role" id="role" >
+									<option value=""  disabled>Select Category</option>
+									<option value="is_child">Child</option>
+									<option value="is_ashaworker">Asha worker</option>
+									<option value="is_hospital">Hospital</option>
+									<option value="is_PHC">PHC</option>
+
+								</select>
+							</span>
+						</div> 
+						{% comment %} <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Username</label>
+								<input type="text" name="username" placeholder="user Name" required="">
+							</span>
+						</div> {% endcomment %}
+						<div class="w3_agileits_main_grid w3l_main_grid">
+						  <span  id="pho" style="font-size:12px; class="agileits_grid"> 
+							{% comment %} <span id="pho" style="font-size:12px;margin-top:-5px;" class="text-danger font-weight-bold"></span> {% endcomment %}
+
+								
+								<label>Phone Number </label>
+								<input type="text" name="phonenumber" placeholder="Phonenumber" id="phonenumber"  required pattern="[0-9]{10}">
+								
+						</div>
+						
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="mail" class="agileits_grid">
+								<label>Your Email </label>
+								<input type="email" name="email" id="email" placeholder="Email" required="">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span  id="address" sclass="agileits_grid">
+								<label>Address</label>
+								<input type="text" name="address" placeholder="address"  required=""> 
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>City </label>
+								<input type="text" name="city" placeholder="city" required pattern="[a-zA_Z\s]+"="">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Pincode </label>
+								<input type="text" name="pincode" placeholder="pincode" equired pattern="[0-9]+">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>District</label>
+								<select name="district">
+									<option value="" selected="" disabled="">Select District</option>
+									<option value="Thiruvananthapuram">Thiruvananthapuram</option>
+									<option value="Kollam">Kollam</option>
+									<option value="Kottayam">Kottayam</option>
+									<option value="Kozhikode">Kozhikode</option>
+                                    <option value="alappuram">Malappuram</option>
+									<option value="Palakkad">Palakkad</option>
+									<option value="Pathanamthitta">Pathanamthitta</option>
+									<option value="Thrissur">Thrissur</option>
+									<option value="Idukki">Idukki</option>
+									<option value="Kannur">Kannur</option>
+                                    <option value="Ernakulam">Ernakulam</option>
+									<option value="Wayanad">Wayanad</option>
+									<option value="Kasargod">Kasargod</option>
+									<option value="Alappuzha">Alappuzha</option>
+									
+								</select>
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="pa1" class="agileits_grid">
+								<label>Password </label>
+								<input type="password" name="password"  id="password" placeholder="Your password" required="">
+							 <span id="pe"> </span> 
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span id="pa1" class="agileits_grid">
+								<label>Confirm </label>
+								<input type="password" name="cpassword" id="cpassword" placeholder="Your password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+							</span>
+						</div>
+						
+						{% comment %} <div class="agileits_w3layouts_main_grid w3ls_main_grid">
+							<span class="agileinfo_grid">
+								<label>Date / Time </label>
+								<div class="agileits_w3layouts_main_gridl">
+									<input class="date" id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+								</div>
+								<!--<div class="agileits_w3layouts_main_gridr">
+									<input type="time" name="Time" placeholder=" " required="">
+								</div>-->
+									<div class="clear"> </div>
+							</span>
+						</div> {% endcomment %}
+					
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+							<a href="{%  url 'userhome' %}"><input type="submit" value="Submit"></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		{% comment %} <!-- Calendar -->
+			<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
+				<script src="{% static 'js/jquery-ui.js' %}"></script>
+					<script>
+						$(function() {
+							$( "#datepicker" ).datepicker();
+						});
+					</script> {% endcomment %}
+		<!-- //Calendar -->
+			
+		</div>
+	</div>
+	</div>
+
+	
+	  <script>
+	    function validation(){
+		var phon=document.getElementById('phonenumber').value;
+		if(phon==""){
+  
+		   document.getElementById('pho').textContent="**Please enter your phone number";
+		   return false;
+  
+		}
+		else{
+		   document.getElementById('pho').textContent="";
+		}
+		if(isNaN(phon)){
+  
+		   document.getElementById('pho').textContent="**User must enter only digits and not characters";
+		   return false;
+
+		}
+		else{
+		   document.getElementById('pho').textContent="";
+		}
+  
+		if(phon.length!=10){
+  
+		   document.getElementById('pho').textContent="**Phone number must be 10 digits only";
+		   return false;
+  
+  
+		}
+		else{
+		   document.getElementById('pho').textContent="";
+		}
+		 var eml=document.getElementById('email').value;
+      if(eml==""){
+
+     document.getElementById('mail').textContent="**Please enter your email id";
+     return false;
+
+      }
+      else{
+         document.getElementById('mail').textContent="";
+      }
+
+      if(eml.indexOf('@')<=0){
+
+         document.getElementById('mail').textContent="**@ at invalid position";
+         return false;
+      }
+      else{
+         document.getElementById('mail').textContent="";
+      }
+
+
+      if((eml.charAt(eml.length-4)!='.')&&(eml.charAt(eml.length-3)!='.')){
+
+         document.getElementById('mail').textContent="**'.' at invalid position";
+         return false;
+      }
+      else{
+         document.getElementById('mail').textContent="";
+      }
+	   var ps1=document.getElementById('password').value;
+	  var ps2=document.getElementById('cpassword').value;
+	  if(ps1==""){
+	
+		 document.getElementById('pe').textContent="**Please enter the password";
+		 return false;
+	
+	  }
+	  else{
+		 document.getElementById('pe').textContent="";
+	  }
+	  if((ps1.length<5)&&(ps1.length>20)){
+	
+		 document.getElementById('pe').textContent="**password length must be between 5 and 20";
+		 return false;
+	
+	  }
+	  else{
+		 document.getElementById('pa1').textContent="";
+	  }
+	
+	  if(ps1!=ps2){
+	
+		 document.getElementById('pe').textContent="**passwords should be matching";
+		 return false;
+	  }
+	  else{
+		 document.getElementById('pa1').textContent="";
+	  }
+	
+	
+	  if(ps2==""){
+		 document.getElementById('pe').textContent="**Please confirm your password";
+		 return false;
+	  }
+	  else{
+		 document.getElementById('pa1').textContent="";
+	  } 
+	  
+	
+	</script>  
+<!-- //footer -->
+</body>
+</html>
+{% endblock %}
