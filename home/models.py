@@ -114,7 +114,7 @@ class Account(AbstractBaseUser,PermissionsMixin):
         ('Kottayam','Kottayam'),
         ('Alappuzha','Alappuzha'),
         ('Idukki','Idukki'),
-        ('Kollam','Kollam'),
+        ('Kollam','Kollam'), 
         ('Ernakulam','Ernakulam'),
         ('Wayanad','Wayanad'),
         ('Kasaragod','Kasaragod'),
@@ -183,14 +183,16 @@ class tbl_addprofile(models.Model):
 
     def __str__(self):
         return self.f_name
-class addvaccine(models.Model):
-    # vaccine_id=models.AutoField(primary_key=True)
-    vaccinename = models.CharField(max_length=100)
-    disease = models.CharField(max_length=100)
-    age = models.CharField(max_length=100)
+# class add_vaccine(models.Model):
+#     # vaccine_id=models.AutoField(primary_key=True)
+#     vaccinename = models.CharField(max_length=100)
+#     disease = models.CharField(max_length=100)
+#     age = models.CharField(max_length=100)
+#     no_dose=models.BigIntegerField()
+#     side_effects=models.CharField(max_length=100)
     
-    def __str__(self):
-         return self.vaccinename
+#     def __str__(self):
+#          return self.vaccinename
         
 # class addvaccinedate(models.Model):
 #     vaccinename = models.ForeignKey(addvaccine, on_delete=models.CASCADE, default=1)
@@ -199,7 +201,106 @@ class addvaccine(models.Model):
    
 #     def __str__(self):
 #           return self.vaccinename
-class vaccinedate(models.Model):
-    vaccinename = models.ForeignKey(addvaccine, on_delete=models.CASCADE, default=1)
-    vaccinedate = models.DateField(default=0)
-    vaccinetime = models.CharField(max_length=200)
+# class vaccine_date(models.Model):
+#     vaccine_name = models.ForeignKey(add_vaccine, on_delete=models.CASCADE, default=1)
+#     vaccine_date = models.DateField(default=0)
+#     vaccine_time = models.CharField(max_length=200)
+# class add_stock(models.Model):
+#      vaccinename = models.ForeignKey(add_vaccine, on_delete=models.CASCADE, default=1)
+#      avail_stock= models.BigIntegerField()
+#      time_slot= models.CharField(max_length=200)
+     
+
+class userprofile_update(models.Model):
+    # email = models.ForeignKey(Account, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    dob = models.DateField(default=datetime.date.today())
+    panchayath = models.CharField(max_length=200)
+    def __str__(self):
+        return f'{self.user.username}-Profile'
+
+class update_profile(models.Model):
+    # email = models.ForeignKey(Account, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    dob = models.DateField(default=datetime.date.today())
+    panchayath = models.CharField(max_length=200)
+    def __str__(self):
+        return f'{self.user.username}-Profile'
+class feedbacks(models.Model):
+    # email = models.ForeignKey(Account, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    dob = models.DateField(default=datetime.date.today())
+    panchayath = models.CharField(max_length=200)
+class Add_vaccines(models.Model):
+    vaccine_name = models.CharField(max_length=100)
+    disease = models.CharField(max_length=100)
+    age = models.CharField(max_length=100)
+    no_dose=models.BigIntegerField()
+    side_effects=models.CharField(max_length=100)
+    
+    def __str__(self):
+          return self.vaccine_name
+# class Addstock(models.Model):
+#      vaccine_name = models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
+#      hospital_name= models.CharField(max_length=200)
+#      avail_stock= models.BigIntegerField()
+#      time_slot= models.CharField(max_length=200)
+#      vaccination_date = models.DateField(default=0)
+#      vaccine_type = models.CharField(max_length=200)   
+class feed(models.Model):
+    # email = models.ForeignKey(Account, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+# class stock_add(models.Model):
+#     vaccine_name = models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
+#     hospital_name= models.CharField(max_length=200)
+#     time_slot= models.CharField(max_length=200)
+#     available_stock= models.BigIntegerField()
+#     vaccination_type = models.CharField(max_length=200) 
+#     vaccination_date = models.DateField(default=0) 
+class demo(models.Model):
+    # email = models.ForeignKey(Account, on_delete=models.CASCADE)
+    demoname = models.CharField(max_length=200)
+class new_stock(models.Model):
+    vaccine_name = models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
+    hospital_name= models.CharField(max_length=200)
+    vaccination_type = models.CharField(max_length=200) 
+    # time_slot= models.CharField(max_length=200)
+    available_stock= models.BigIntegerField()
+    vaccination_date = models.DateField(blank=True, null=True)  
+    def __str__(self):
+          return self.vaccine_name
+class about_vaccine(models.Model):
+    disease= models.CharField(max_length=400)
+    vaccine= models.CharField(max_length=300)
+    disease_spread= models.CharField(max_length=300)
+    symptoms= models.CharField(max_length=300)
+    complications= models.CharField(max_length=300)
+
+class add_timeslot(models.Model):
+    vaccine_name = models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
+    vaccination_date  = models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
+    hospital_name= models.CharField(max_length=200,default='000000')
+    time_slot= models.CharField(max_length=200)
+    def __str__(self):
+          return self.vaccine_name
+# class add_booking(models.Model):
+#     hospital_name = models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
+#     vaccine_name= models.CharField(max_length=200)
+#     child_name= models.CharField(max_length=200)
+#     dose = models.BigIntegerField()
+#     vaccination_date = models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
+#     time_slot = models.CharField(max_length=200) 
+   
+#     def __str__(self):
+#           return self.hospital_name
+class book_add(models.Model):
+    user =models.ForeignKey(Account, on_delete=models.SET_NULL,null=True)
+    vaccination_date= models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
+    hospital_name= models.CharField(max_length=200,default='000000')
+    vaccine_name= models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
+    child_name= models.CharField(max_length=200,default='000000')
+    dose = models.BigIntegerField()
+    time_slot = models.ForeignKey(add_timeslot,on_delete=models.CASCADE, default=1)
+   
+    def __str__(self):
+          return self.hospital_name

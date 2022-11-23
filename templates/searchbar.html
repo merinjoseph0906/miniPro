@@ -2,13 +2,43 @@
 {% load static %}
 {% block content %}
 <h2 align="center">SEARCH RESULTS</h2>
+{% if msg == 1 %}
+<style>
+    .alert {
+        padding: 30px;
+        width:500px;
+        background-color: #f44336;
+        color: white;
+        margin-left: 450px;
+        margin-top:150px;
+    }
+    
+    .closebtn {
+        margin-left: 20px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong>Not Found!</strong> no informations is available.
+  </div>
 <div class="gallery">
     {% for i in Addvaccine %}
 <div class="content">
-        <h3>Vaccine:{{i.vaccinename}}</h3>
-        <h3>Disease:{{i.disease}}</h3>
-        <h3>Age:{{i.age}}</>
-        
+        <h3>Vaccine:{{i.vaccine_name}}</h3>
+        {% comment %} <h3>Disease:{{i.disease}}</h3>
+        <h3>Age:{{i.age}}</> {% endcomment %}
+           <h3>Slot:{{i.available_stock}}</h3>
         <ul>
 <!--                        <li><i class="fa fa-star checked"></i></li>-->
 <!--                        <li><i class="fa fa-star checked"></i></li>-->
@@ -18,6 +48,7 @@
         </ul>
 
         <button class="buy-1">Book now</button>
+        {% comment %} <button class="buy-1">Book now</button> {% endcomment %}
             </div>
   {% endfor %}
 <!--                        <div class="content">-->

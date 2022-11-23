@@ -93,12 +93,21 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    {% comment %} <li class="nav-item">
                       <a class="nav-link" href="{% url 'viewvaccinedate' %}">vaccination dates</a>
+                    </li> {% endcomment %}
+                    {% comment %} <li class="nav-item">
+                      <a class="nav-link" href="{% url 'viewvaccine' %}">view vaccine</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'viewabout' %}">vaccine info</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'viewvaccine' %}">view vaccine</a>
+                      <a class="nav-link" href="{% url 'slotsearch' %}">booking</a>
                     </li>
+                    {% comment %} <li class="nav-item">
+                      <a class="nav-link" href="{% url 'profile' %}">view profile</a>
+                    </li> {% endcomment %}
                     {% comment %} <li class="nav-item">
                       <a class="nav-link" href="{% url 'viewvaccinedate' %}">Contact</a>
                     </li> {% endcomment %}
@@ -114,8 +123,9 @@
                       <div class="dropdown">
                         <a  class="nav-link" href=""><span class="fa fa-user"></span>&nbsp;<span>{{request.user.username}}</span></a>
                         <div class="dropdown-content">
-                        <a href="{%url 'change_password' %}">change password</a>
-                        {% comment %} <a href="{% url 'addprofile' %}">Add profile</a> {% endcomment %}
+                        <a href="{%url 'change_password' %}">Change password</a>
+                       <a href="{% url 'profile' %}">Update profile</a>
+                      
                     
                         <a href="{% url 'logout' %}">logout</a>
                         

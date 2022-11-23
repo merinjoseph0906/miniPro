@@ -1,0 +1,132 @@
+{% extends 'userbase.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>booking</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-5/css/fontawesome-all.min.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/style8.css' %}"/>
+    <style>
+        body{
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__340.jpg');
+        }
+    </style>
+</head>
+<body class="form-v5">
+	<div class="page-content">
+		<div class="form-v5-content">
+			<form class="form-detail" action="{% url 'addbooking'  %}" method="POST">
+				{% csrf_token %}
+				<h2>BOOK NOW</h2>
+				
+				<div class="form-row" padding-right:500; padding-top:500; padding-bottom:500;>
+					
+					<label for="cars">Hospital name:</label><br>
+                   
+					<select name="hospital_name" id="cars" >
+						{% for i in Stock %}
+					<option value="{{i.id}}">{{i.hospital_name}}</option>
+                    
+					{% comment %} <option value="saab"></option>
+					<option value="mercedes"></option>
+					<option value="audi"></option> {% endcomment %}
+					{% endfor %}
+					</select>
+					
+				</div>
+                <div class="form-row">
+					
+					<label for="cars">Vaccine name:</label><br>
+                   
+					<select name="vaccine_name" id="cars" >
+						{% for i in vaccine %}
+					<option value="{{i.id}}">{{i.vaccine_name}}</option>
+                    
+					{% comment %} <option value="saab"></option>
+					<option value="mercedes"></option>
+					<option value="audi"></option> {% endcomment %}
+					{% endfor %}
+					</select>
+					
+				</div>
+                <div class="form-row">
+					<label for="pass">Child name</label>
+					<input type="text" name="child_name" id="password" class="input-text" placeholder="child name" required>
+					<i class="fas fa-lock"></i>
+				</div> 
+                <div class="form-row">
+					<label for="pass">No_dose</label>
+					<input type="text" name="dose" id="password" class="input-text" placeholder="no_dose" required>
+					<i class="fas fa-lock"></i>
+				</div> 
+				
+				
+                {% comment %} <div class="form-row" padding-right:500;>
+					
+					<label for="cars">Vaccine date:</label><br>
+                   
+					<select name="vaccination_date" id="cars" width:500px; >
+						{% for i in Stock %}
+					<option value="{{i.id}}">{{i.vaccination_date|date:"Y-m-d"}}</option>
+					{% comment %} <option value="saab"></option>
+					<option value="mercedes"></option>
+					<option value="audi"></option> {% endcomment %}
+					{% comment %} {% endfor %}
+					</select>
+					
+				</div> {% endcomment %}
+                <div class="form-row" padding-right:500;>
+					
+					<label for="cars">Vaccine date:</label><br>
+                   
+					<select name="vaccination_date" id="cars" width:500px; >
+						{% for i in Stock %}
+					<option value="{{i.id}}">{{i.vaccination_date|date:"Y-m-d"}}</option>
+					{% comment %} <option value="saab"></option>
+					<option value="mercedes"></option>
+					<option value="audi"></option> {% endcomment %}
+					{% endfor %}
+					</select>
+					
+				</div>
+                <div class="form-row" padding-right:500;>
+					
+					<label for="cars">Time_slot:</label><br>
+                   
+					<select name="time_slot" id="cars" >
+						{% for i in Slot %}
+					<option value="{{i.id}}">{{i.time_slot}}</option>
+					{% comment %} <option value="saab"></option>
+					<option value="mercedes"></option>
+					<option value="audi"></option> {% endcomment %}
+					{% endfor %}
+					</select>
+					
+				</div>
+			
+				
+				{% comment %} <div class="form-row">
+					<label for="pass">time-slot</label>
+					<input type="text" name="time_slot" id="password" class="input-text" placeholder="timeslot" required>
+					<i class="fas fa-lock"></i>
+				</div>  {% endcomment %}
+				
+				
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="CONFIRM BOOKING">
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+{% endblock content %}

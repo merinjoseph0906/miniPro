@@ -1,0 +1,54 @@
+{% extends 'userbase.html'%}
+{% load static %}
+{% block content %}
+
+{% comment %} <table>
+<div class="content">
+    <tr><th>vaccinename</th><th>Date</th></tr>
+   <tr><td> {{i.vaccinename}}</td><td>{{i.vaccinedate}}</td></tr>
+    
+        {% endfor %}
+    </div>
+</table> {% endcomment %}
+
+
+<table>
+  <tr>
+    <th>VACCINE NAME</th>
+    <th>HOSPITAL NAME</th>
+    <th>AVAILABLE STOCK</th> 
+    <th>TIME SLOT</th>
+    <th>VACCINATION_DATE</th>
+
+    
+  </tr>
+  {% for i in stocks%}
+  <tr>
+    <td>{{i.vaccine_name}}</td>
+    <td>{{i.hospital_name}}</td>
+    <td>{{i.avail_stock}}</td>
+    <td>{{i.time_slot}}</td>
+  
+    <td>{{i.vaccination_date}}</td>
+  </tr>
+  
+  {% endfor %}
+</table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+{% endblock content %}
