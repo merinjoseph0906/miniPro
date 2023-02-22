@@ -13,11 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-5/css/fontawesome-all.min.css">
 	<!-- Main Style Css -->
     <link rel="stylesheet" href="{% static 'css/style8.css' %}"/>
-    <style>
-        body{
-            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__340.jpg');
-        }
-    </style>
+  
 </head>
 <body class="form-v5">
 	<div class="page-content">
@@ -57,12 +53,12 @@
 					
 				</div>
                 <div class="form-row">
-					<label for="pass">Child name</label>
+					<label for="pass">Child name:</label>
 					<input type="text" name="child_name" id="password" class="input-text" placeholder="child name" required>
 					<i class="fas fa-lock"></i>
 				</div> 
                 <div class="form-row">
-					<label for="pass">No_dose</label>
+					<label for="pass">No_dose:</label>
 					<input type="text" name="dose" id="password" class="input-text" placeholder="no_dose" required>
 					<i class="fas fa-lock"></i>
 				</div> 
@@ -100,9 +96,9 @@
 					
 					<label for="cars">Time_slot:</label><br>
                    
-					<select name="time_slot" id="cars" >
+					<select name="time_slots" id="cars" >
 						{% for i in Slot %}
-					<option value="{{i.id}}">{{i.time_slot}}</option>
+					<option value="{{i.id}}">{{i.time_slots}}</option>
 					{% comment %} <option value="saab"></option>
 					<option value="mercedes"></option>
 					<option value="audi"></option> {% endcomment %}

@@ -43,7 +43,7 @@
     {% comment %} {% if is_hospital == True %} {% endcomment %} 
     
 <div class="content">
-        <h3>Hospital:&nbsp;{{i.hospital_name}}</h3> 
+        {% comment %} <h3>Hospital:&nbsp;{{i.hospital_name}}</h3>  {% endcomment %}
         <h3>Vaccine:&nbsp;{{i.vaccine_name}}</h3> 
         <h3>Slots:&nbsp;{{i.available_stock}}</h3> 
         {% comment %} <h3>{{i.address}}</h3>

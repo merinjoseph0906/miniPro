@@ -236,7 +236,7 @@ class Add_vaccines(models.Model):
     disease = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     no_dose=models.BigIntegerField()
-    side_effects=models.CharField(max_length=100)
+    # side_effects=models.CharField(max_length=100)
     
     def __str__(self):
           return self.vaccine_name
@@ -276,13 +276,13 @@ class about_vaccine(models.Model):
     symptoms= models.CharField(max_length=300)
     complications= models.CharField(max_length=300)
 
-class add_timeslot(models.Model):
+class time_slot(models.Model):
     vaccine_name = models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
     vaccination_date  = models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
     hospital_name= models.CharField(max_length=200,default='000000')
-    time_slot= models.CharField(max_length=200)
-    def __str__(self):
-          return self.vaccine_name
+    time_slots= models.TimeField(max_length=200)
+ 
+    
 # class add_booking(models.Model):
 #     hospital_name = models.ForeignKey(new_stock,on_delete=models.CASCADE, default=1)
 #     vaccine_name= models.CharField(max_length=200)
@@ -300,7 +300,11 @@ class book_add(models.Model):
     vaccine_name= models.ForeignKey(Add_vaccines,on_delete=models.CASCADE, default=1)
     child_name= models.CharField(max_length=200,default='000000')
     dose = models.BigIntegerField()
-    time_slot = models.ForeignKey(add_timeslot,on_delete=models.CASCADE, default=1)
+    time_slots = models.ForeignKey(time_slot,on_delete=models.CASCADE, default=1)
    
     def __str__(self):
           return self.hospital_name
+class add_hospitaldetails(models.Model):
+    id= models.AutoField(primary_key=True)
+    hosp_name= models.CharField(max_length=400)
+    hos_type= models.CharField(max_length=300)

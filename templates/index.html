@@ -582,7 +582,7 @@
             <a href="#"><img src="{% static 'css/images/6.jpg' %}" class="img-fluid" alt="news image"></a>
             <div class="title-wrap">
               <a href="#">
-                <h4 class="title">Dental Surgery</h4>
+                {% comment %} <h4 class="title">Dental Surgery</h4> {% endcomment %}
               </a>
               <a href="#" class="text-right"><span class="fa fa-arrow-right"></span></a>
             </div>
@@ -602,16 +602,14 @@
               <h6 class="sub-titlehny">Join Us</h6>
               <h3 class="hny-title">Stay Updated! </h3>
               <div class="separatorhny"></div>
-              <p class="my-3">Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                consectetur adipisicing.
-                turpis sodales quis. Integer sit amet mattis quam.</p>
+              <p class="my-3">Vaccines will help protect your child against diseases that can cause serious harm or death, especially in people with developing immune systems like infants. It's important to vaccinate your child</p>
             </div>
-            <form action="#" method="post" class="subscribe-wthree pt-2 mt-5">
+            {% comment %} <form action="#" method="post" class="subscribe-wthree pt-2 mt-5">
               <div class="d-md-flex flex-wrap subscribe-wthree-field">
                 <input class="form-control" type="email" placeholder="Enter your email..." name="email" required="">
                 <button class="btn btn-style btn-primary" type="submit">Subscribe</button>
               </div>
-            </form>
+            </form> {% endcomment %}
           </div>
         </div>
       </div>

@@ -141,9 +141,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'evaccination01@gmail.com'
-DEFAULT_FROM_EMAIL = 'evaccination01@gmail.com'
-SERVER_EMAIL = 'evaccination01@gmail.com'
-EMAIL_HOST_PASSWORD = 'nbebjnsguskjavvk'
+EMAIL_HOST_USER = 'evaccination002@gmail.com'
+DEFAULT_FROM_EMAIL = 'evaccination002@gmail.com'
+SERVER_EMAIL = 'evaccination002@gmail.com'
+EMAIL_HOST_PASSWORD = 'wfleylslqgavpqnm'
 
 EMAIL_USE_TLS = True

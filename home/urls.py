@@ -46,5 +46,6 @@ urlpatterns = [
     path('addbooking/',views.addbooking,name='addbooking'),
     path('viewbooking/',views.viewbooking,name='viewbooking'),
     path('continuesearch/<str:username>/',views.continuesearch,name='continuesearch'),
-   
+    path('hospitaldetails/',views.hospitaldetails,name='hospitaldetails'),
+  
 ]

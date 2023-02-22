@@ -11,7 +11,7 @@
     </div>
 </table> {% endcomment %}
 
-
+{% if result %}
 <table>
   <tr>
     {% comment %} <th>VACCINATION DATE</th> {% endcomment %}
@@ -23,20 +23,24 @@
 
     
   </tr>
-  {% for i in book%}
+  {% for i in result %}
   <tr>
     {% comment %} <td>{{i.vaccination_date}}</td> {% endcomment %}
    
     <td>{{i.vaccine_name}}</td>
     <td>{{i.child_name}}</td>
     <td>{{i.dose}}</td>
-    <td>{{i.time_slot}}</td>
+    <td>{{i.time_slots.time_slots}}</td>
+    {% comment %} <td>{{i.time_slot}}</td> {% endcomment %}
   
   
   </tr>
   
   {% endfor %}
 </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% else %}
+<h5>no records</h5>
+{% endif %}
 <style>
     table {
       font-family: arial, sans-serif;

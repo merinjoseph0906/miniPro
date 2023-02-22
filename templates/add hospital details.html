@@ -18,63 +18,35 @@
 	<div class="page-content">
 		<div class="form-v5-content">
 			<script>document.getElementById("myForm").reset();</script>
-			<form onsubmit ="return  emailValidation() && addressValidation() && cityValidation() && districtValidation() && pincodeValidation() && passwordValidation() && cpasswordValidation()" class="form-detail" action="{% url 'viewstock' %}" method="POST" id="myForm">
+			<form onsubmit ="return  emailValidation() && addressValidation() && cityValidation() && districtValidation() && pincodeValidation() && passwordValidation() && cpasswordValidation()" class="form-detail" action="{% url 'hospitaldetails' %}" method="POST" id="myForm">
 				{% csrf_token %}
-				<h2>ADD STOCK</h2>
+				<h2>ADD HOSPITAL DETAILS</h2>
 				
 				<div class="form-row" padding-right:500;>
 					
-					<label for="cars">Vaccine name:</label><br>
+					<label for="cars">Hospital type:</label><br>
                    
-					<select name="vaccine_name" id="cars" >
-						{% for i in vaccination %}
-					<option value="{{i.id}}">{{i.vaccine_name}}</option>
-					{% comment %} <option value="saab"></option>
-					<option value="mercedes"></option>
-					<option value="audi"></option> {% endcomment %}
-					{% endfor %}
+					<select name="hos_type" id="cars" >
+					
+					
+                    <option value="audi"></option> 
+					 <option value="saab">private</option>
+					<option value="mercedes">goverment</option>
+					
+					 
 					</select>
 					
 				</div>
 				<div class="form-row">
-					<label for="pass">hospital/phc_name:</label>
-					<input type="text" name="hospital_name" id="hname" class="input-text" placeholder="hospital_name" onkeyup='cityValidation(this)' required>
+					<label for="pass">Hospital name</label>
+					<input type="text" name="hosp_name" id="hname" class="input-text" value={{request.user.username}} disabled onkeyup='cityValidation(this)' required>
 					<span class="error-msg" id="hospital"></span>
 					<i class="fas fa-lock"></i>
 				</div>
-				<div class="form-row">
-					<label for="pass">available_stock:</label>
-					<input type="number" name="available_stock" id="password" class="input-text" placeholder="avail_stock"  required>
-					<span class="error-msg" id="contact">
-					<i class="fas fa-lock"></i>
-				</div>
-				{% comment %} <div class="form-row">
-					<label for="pass">time-slot</label>
-					<input type="text" name="time_slot" id="password" class="input-text" placeholder="timeslot" required>
-					<i class="fas fa-lock"></i>
-				</div> {% endcomment %}
-				<div class="form-row">
-					<label for="pass">Vaccination date:</label>
-					<input type="date" name="vaccination_date" id="password" class="input-text" placeholder="vaccination_date" min="2022-11-24" max="2080-31-12" required>
-					<i class="fas fa-lock"></i>
-				</div>
-				<label for="cars">Vaccine Type:</label>
-				<select name="vaccination_type" id="cars" >
-					
-				{% comment %} <option value="{{i.id}}">{{i.vaccine_name}}</option> {% endcomment %}
-				<option value="free">free</option>
-				<option value="paid">paid</option>
 				
-				
-				</select>
-				{% comment %} <div class="form-row">
-					<label for="pass">vaccination_type</label>
-					<input type="text" name="vaccination_type" id="password" class="input-text" placeholder="vaccination_type" required>
-					<i class="fas fa-lock"></i>
-				</div> {% endcomment %}
 				<div class="form-row-last">
-					<input type="submit" name="register" class="register"   value="ADD STOCK">
-				</div>
+					<input type="submit" name="register" class="register"   value="ADD DETAILS">
+				</div> 
 				
 			</form>
 		</div>

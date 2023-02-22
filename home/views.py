@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 from .models import Account, update_profile
-from .models  import tbl_addprofile,Add_vaccines,new_stock,about_vaccine,add_timeslot,book_add
+from .models  import tbl_addprofile,Add_vaccines,new_stock,about_vaccine,time_slot,book_add,add_hospitaldetails
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
@@ -149,7 +149,7 @@ def forgotPassword(request):
             send_mail(
                 'Please activate your account',
                 message,
-                'evaccination01@gmail.com',
+                'evaccination002@gmail.com',
                 [email],
                 fail_silently=False,
             )
@@ -244,10 +244,13 @@ def viewvaccinedate(request):
 #     return render(request,'addstock.html',{'vaccination':Addstock})
 def viewstock(request):
     Addstock = Add_vaccines.objects.all()
+    print("1")
   
     if request.method == 'POST':
+        print("2")
         
         available_stock = request.POST.get('available_stock')
+        print("3")
         # time_slot = request.POST.get('time_slot')
         hospital_name = request.POST.get('hospital_name')
         vaccine_name = request.POST.get('vaccine_name')
@@ -270,12 +273,12 @@ def addtimeslot(request):
         hospital_name = request.POST.get('hospital_name')
        
         vaccination_date=request.POST.get('vaccination_date')
-        time_slot = request.POST.get('time_slot')
+        time_slots = request.POST.get('time_slots')
         # vaccination_type=request.POST.get('vaccination_type')
         print(vaccination_date)
         # vaccination_date = vaccination_date.strftime("%Y-%m-%d")
         
-        add=add_timeslot.objects.create(vaccine_name_id=vaccine_name,vaccination_date_id=vaccination_date,hospital_name=hospital_name, time_slot = time_slot )
+        add=time_slot.objects.create(vaccine_name_id=vaccine_name,vaccination_date_id=vaccination_date,hospital_name=hospital_name, time_slots = time_slots )
         add.save()
        
   
@@ -415,16 +418,16 @@ def viewaboutvaccine(request):
 def addbooking(request):
     vaccine = Add_vaccines.objects.all()
     stok = new_stock.objects.all()
-    slot = add_timeslot.objects.all()
+    slot = time_slot.objects.all()
     if request.method == 'POST':
         hospital_name = request.POST.get('hospital_name')
         vaccine_name = request.POST.get('vaccine_name')
         child_name = request.POST.get('child_name')
         dose = request.POST.get('dose')
         vaccination_date=request.POST.get('vaccination_date')
-        time_slot = request.POST.get('time_slot')
+        time_slots = request.POST.get('time_slots')
         
-        b=book_add.objects.create(hospital_name=hospital_name,vaccine_name_id=vaccine_name,child_name=child_name,dose=dose,vaccination_date_id=vaccination_date,time_slot_id=time_slot)
+        b=book_add.objects.create(user=request.user,hospital_name=hospital_name,vaccine_name_id=vaccine_name,child_name=child_name,dose=dose,vaccination_date_id=vaccination_date,time_slots_id=time_slots)
         b.save()
         print(hospital_name)
         print(vaccine_name)
@@ -437,54 +440,53 @@ def addbooking(request):
         slott.save()
     return render(request,"booking.html",{'Stock':stok,'Slot':slot,'vaccine':vaccine})
 def viewbooking(request):
-    book=book_add.objects.all()
-    return render(request,"booking view.html",{'book':book})
-#         obj1=Account.objects.get(email))
-#         obj=book_add.objects.filter(hospital_name=username)
-#         print(obj)
-#         print(request.user.id)
-#         print(request.user.username)
-#         context={'result' : obj }
-#         return render(request,'booking view.html',context)
-#     else:
-#         return render(request,'booking view.html')
-    # print(request.session['email'])
-    
-    
-    # user=Account.objects.get(email=request.session['email'],is_hospital=True)
-    # print(user)
-    # user=request.user
-    # print(user)
+    if request.user.is_authenticated:
+        print(request.user)
+        # demo=[]
 
-  
-    # hospital_name_obj=new_stock.objects.filter(hospital_name=user.username)
-    # book=book_add.objects.all()
-    # print(book)
-    
-    # if request.user.is_authenticated:
+        # res=[]
+        
+        obj=book_add.objects.filter(user=request.user)
+        # print(demo)
+        # print(obj)
+        # for data in obj:
+        #     res.append(data.vaccine_name)
+        #     res.append(data.child_name)
+        #     res.append(data.dose)
+        #     print(res)
+        #     print(data.time_slots.id)
+        #     time_obj=time_slot.objects.get(id=data.time_slots.id)
+        #     print(time_obj)
+        #     res.append(time_obj.time_slots)
+        #     print(res)
+        #     demo.append(res)
+        #     res=[]
+        # print(demo)
+       
 
-    #     obj=book_add.objects.(user=request.user)
-    #     print(request.user)
-    #     context={'result' : obj }
-    #     return render(request,'booking view.html',context)
-    # else:
-    #     return render(request,'booking view.html')
-    # return render(request,"booking view.html",{'book':book})
+        
+        context={'result': obj }
+        return render(request,"booking view.html",context)
+    else:
+        return render(request,"booking view.html")
+    
 
 def continuesearch(request,username):
     user_name=username
     detail_list=new_stock.objects.filter(hospital_name=username)
     print(user_name)
     return render(request,"vsearch continue.html",{'detail':detail_list})
+def hospitaldetails(request):
+    if request.method == 'POST':
+        hosp_name = request.user.username
+        hos_type = request.POST.get('hos_type')
+        print(hosp_name,hos_type)
+        details=add_hospitaldetails(hosp_name=hosp_name,hos_type=hos_type)
+        details.save()
+    return render(request,'add hospital details.html') 
 
 
     
-
-
-
-
-
-
 
 
 
@@ -506,7 +508,7 @@ def addprofile(request):
         return redirect('userhome')
 
     return render(request, 'addprofile.html')
-  
+
 
 # def phcreg(request):
 #     print('0')

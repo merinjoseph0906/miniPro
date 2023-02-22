@@ -14,6 +14,11 @@
 	<!-- Main Style Css -->
     <link rel="stylesheet" href="{% static 'css/style8.css' %}"/>
 </head>
+<style>
+	body {
+	  background-image: url('img_girl.jpg');
+	}
+	</style>
 <body class="form-v5">
 	<div class="page-content">
 		<div class="form-v5-content">
@@ -51,7 +56,7 @@
 				</div>
                 <div class="form-row" padding-right:500;>
 					
-					<label for="cars">hospital name:</label><br>
+					<label for="cars">Hospital name:</label><br>
                    
 					<select name="hospital_name" id="cars" >
 						{% for i in Stocks %}
@@ -66,8 +71,8 @@
 			
 				
 				<div class="form-row">
-					<label for="pass">time-slot</label>
-					<input type="text" name="time_slot" id="password" class="input-text" placeholder="timeslot" required>
+					<label for="pass">Time-slot:</label>
+					<input type="time" name="time_slots" id="password" class="input-text" placeholder="timeslot" required>
 					<i class="fas fa-lock"></i>
 				</div> 
 				

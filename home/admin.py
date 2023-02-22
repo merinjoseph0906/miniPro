@@ -35,7 +35,7 @@ class RegAdmin(admin.ModelAdmin):
 
 admin.site.register(Account,RegAdmin)
 class Viewvaccine(admin.ModelAdmin):
-    list_display = ['vaccine_name', 'disease', 'no_dose', 'side_effects']
+    list_display = ['vaccine_name', 'disease', 'no_dose']
     actions = [export_reg]
 
 

@@ -1,5 +1,7 @@
+{% extends 'userbase.html'%}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block content %}
 
 
 <!doctype html>
@@ -42,7 +44,7 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg ">
         <div class="container" style="left: 10px;" >
-            <a class="navbar-brand text-white" href="index.html">KenInventory</a>
+            <a class="navbar-brand text-white" href="index.html"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -132,3 +134,4 @@
 </body>
 
 </html>
+{% endblock content %}
