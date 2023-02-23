@@ -9,6 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <head>
 	<title>Latest Login Form Responsive Widget Template :: w3layouts</title>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -22,6 +23,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			window.scrollTo(0, 1);
 		}
 	</script>
+	
+		
 	<!-- Meta tag Keywords -->
 
 	<!-- css files -->
@@ -52,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<script>document.getElementById("myForm").reset();</script>
 				<div>
-				<form onsubmit ="return  emailValidation()  && passwordValidation()" action="{% url 'login' %}" method="post" id="myForm">
+				<form onsubmit ="return  validatee()" action="{% url 'login' %}" method="post" id="myForm">
 					{% csrf_token %}
 					<p class="legend">Login Here<span class="fa fa-hand-o-down"></span></p>
 					<div class="input"><br>
@@ -66,6 +69,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<input type="password" placeholder="Password" name="password" id="pass1" onkeyup='passwordValidation(this)' required/><br><b>
 						<span class="error-msg" id="password"></span><br>
 						<span class="fa fa-unlock"></span>
+					</div>
+					<div style="margin-left:-10%;">
+						<div class="g-recaptcha" data-sitekey="6Lf-rackAAAAAFhQ1IRRp5_B0FB5fP7nSBOH-aJ5"></div>
+                         <div id="g-recaptcha-error"></div>
 					</div>
 					
 					<!--<button type="submit" class="btn submit" name ="submit">
@@ -150,6 +157,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         textField.textContent = 'your input is empty';
         textField.style.color = "red";
     }
+        }
+		function validatee() {
+			var pass=document.getElementById('password').value;
+			var email=document.getElementById('email').value;
+			
+			if (grecaptcha.getResponse() == "") {
+
+				document.getElementById('g-recaptcha-error').textContent = "Enter the Captcha";
+				document.getElementById("g-recaptcha-error").style.color = "red";
+				return false;
+			}
+			else if (grecaptcha.getResponse() == "") {
+				alert(response)
+				document.getElementById('g-recaptcha-error').innerHTML =
+					'<span style="color:red;">This field is required.</span>';
+				return false;
+			} else if(!emailValidation(email)){
+				document.getElementById('email').textContent="please enter the email";
+				document.getElementById('email').style.color="red";
+				return false
+			}
+			else {
+				return true;
+			}
+
+
 }
 	</script>
 
