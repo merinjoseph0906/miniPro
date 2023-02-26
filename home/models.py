@@ -104,6 +104,8 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractBaseUser,PermissionsMixin):
     status_choices=(('Approved','Approved'),('Pending','Pending'), ('None','None'))
     role_choices=(('is_admin','is_admin'),('is_child','is_child'),('is_ashaworker','is_ashaworker'),('is_hospital','is_hospital'),('is_PHC','is_PHC'))
+    gender_choices=(('Male','Male'),('Female','Female'),('others','others'), ('None','None'))
+    bloodgroup_choices=(('A+','A-'),('B+','B-'),('AB+','AB-'), ('O+','O-'))
     district_choices=(
         ('Kozhikode','Kozhikode'),
         ('Malappuram','Malappuram'),
@@ -133,6 +135,11 @@ class Account(AbstractBaseUser,PermissionsMixin):
     pincode       = models.BigIntegerField(default=0)
     district      = models.CharField(max_length=50,choices=district_choices,default='None')
     role          = models.CharField(max_length=100,choices=role_choices)
+    childname     = models.CharField(max_length=100, default='')
+    weight        = models.CharField(max_length=100, default='')
+    dob           = models.DateField(blank=True,null=True)
+    gender        = models.CharField(max_length=50,choices=gender_choices,default='None')
+    bloodgroup    = models.CharField(max_length=50,choices=bloodgroup_choices,default='None')
 
     # required
     date_joined     = models.DateTimeField(auto_now_add=True)
@@ -267,6 +274,7 @@ class new_stock(models.Model):
     # time_slot= models.CharField(max_length=200)
     available_stock= models.BigIntegerField()
     vaccination_date = models.DateField(blank=True, null=True)  
+    amount=models.BigIntegerField(default=0)
     def __str__(self):
           return self.vaccine_name
 class about_vaccine(models.Model):
@@ -301,6 +309,8 @@ class book_add(models.Model):
     child_name= models.CharField(max_length=200,default='000000')
     dose = models.BigIntegerField()
     time_slots = models.ForeignKey(time_slot,on_delete=models.CASCADE, default=1)
+    status= models.CharField(max_length=200,default='000000')
+    amount=models.BigIntegerField(default=0)
    
     def __str__(self):
           return self.hospital_name

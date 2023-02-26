@@ -54,20 +54,24 @@
 					</select>
 					
 				</div>
-                <div class="form-row" padding-right:500;>
+				<div class="form-row">
+					<label for="pass">Hospital name</label>
+					<input type="text" name="hosp_name" id="hname" class="input-text" value={{request.user.username}} disabled onkeyup='cityValidation(this)' required>
+					<span class="error-msg" id="hospital"></span>
+					<i class="fas fa-lock"></i>
+				</div>
+                {% comment %} <div class="form-row" padding-right:500;>
 					
 					<label for="cars">Hospital name:</label><br>
                    
 					<select name="hospital_name" id="cars" >
 						{% for i in Stocks %}
 					<option value="{{i.id}}">{{i.hospital_name}}</option>
-					{% comment %} <option value="saab"></option>
-					<option value="mercedes"></option>
-					<option value="audi"></option> {% endcomment %}
+				
 					{% endfor %}
 					</select>
 					
-				</div>
+				</div> {% endcomment %}
 			
 				
 				<div class="form-row">

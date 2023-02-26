@@ -252,11 +252,12 @@ def viewstock(request):
         available_stock = request.POST.get('available_stock')
         print("3")
         # time_slot = request.POST.get('time_slot')
-        hospital_name = request.POST.get('hospital_name')
+        hospital_name = request.user.username
         vaccine_name = request.POST.get('vaccine_name')
         vaccination_date=request.POST.get('vaccination_date')
         vaccination_type=request.POST.get('vaccination_type')
-        addstock=new_stock(vaccine_name_id=vaccine_name,available_stock=available_stock,vaccination_date=vaccination_date,vaccination_type=vaccination_type,hospital_name=hospital_name)
+        amount=request.POST.get('amount')
+        addstock=new_stock(vaccine_name_id=vaccine_name,available_stock=available_stock,vaccination_date=vaccination_date,vaccination_type=vaccination_type,hospital_name=hospital_name,amount=amount)
         addstock.save()
         
   
@@ -270,7 +271,7 @@ def addtimeslot(request):
         
         # available_stock = request.POST.get('available_stock')
         vaccine_name = request.POST.get('vaccine_name')
-        hospital_name = request.POST.get('hospital_name')
+        hospital_name =request.user.username
        
         vaccination_date=request.POST.get('vaccination_date')
         time_slots = request.POST.get('time_slots')
@@ -447,21 +448,8 @@ def viewbooking(request):
         # res=[]
         
         obj=book_add.objects.filter(user=request.user)
-        # print(demo)
-        # print(obj)
-        # for data in obj:
-        #     res.append(data.vaccine_name)
-        #     res.append(data.child_name)
-        #     res.append(data.dose)
-        #     print(res)
-        #     print(data.time_slots.id)
-        #     time_obj=time_slot.objects.get(id=data.time_slots.id)
-        #     print(time_obj)
-        #     res.append(time_obj.time_slots)
-        #     print(res)
-        #     demo.append(res)
-        #     res=[]
-        # print(demo)
+        
+     
        
 
         
@@ -485,9 +473,39 @@ def hospitaldetails(request):
         details.save()
     return render(request,'add hospital details.html') 
 
-
+def employeeprofile(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        phonenumber = request.POST.get('phonenumber')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        district=request.POST.get('District')
+        childname = request.POST.get('childname')
+        dob = request.POST.get('dob')
+        gender = request.POST.get('gender')
+        bloodgroup=request.POST.get('bloodgroup')
+        weight = request.POST.get('weight')
+        user_id = request.user.id
+        
+        user = Account.objects.get(id=user_id)
+        user.username = username
+        user.phonenumber = phonenumber
+        user.email = email
+        user.address = address
+        user.dob=dob
+        user.childname=childname
+        user.gender=gender
+        user.bloodgroup = bloodgroup
+        user.district=district
+        user.weight=weight
+        
+        user.save()
+        messages.success(request,'Profile Are Successfully Updated. ')
+    return render(request,'employee profile.html') 
     
-
+# def Update_profile(request):
+   
+#         return redirect('Eprofile')
 
 
 
@@ -508,7 +526,18 @@ def addprofile(request):
         return redirect('userhome')
 
     return render(request, 'addprofile.html')
-
+def profileview(request):
+    if request.user.is_authenticated:
+        print(request.user)
+       
+        
+    
+        
+       
+        
+      
+    return render(request,'profile view.html') 
+    
 
 # def phcreg(request):
 #     print('0')
